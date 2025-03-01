@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Schedule Gua</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="button-group">
+            <h1>My Schedule Gua</h1>
+            <div class="header-buttons">
+                <a href="https://github.com/enowdev/myschedulegua" 
+                   class="github-link" 
+                   target="_blank"
+                   rel="noopener noreferrer">
+                   View Source Code
+                </a>
+                <button class="screenshot-btn" onclick="takeScreenshot()">
+                    <i class="fas fa-camera"></i>
+                    Download Screenshot
+                </button>
+            </div>
+        </div>
+        
+        <form class="schedule-form" id="scheduleForm">
+            <input type="time" id="timeInput" required>
+            <input type="text" id="activityInput" placeholder="Aktivitas..." required>
+            <button type="submit">Tambah</button>
+        </form>
+
+        <div class="entries-container" id="entriesContainer">
+        </div>
+    </div>
+    <script src="scripts/main.js"></script>
+</body>
+</html> 
