@@ -73,16 +73,28 @@ function formatTime(timeString) {
 }
 
 function takeScreenshot() {
-    html2canvas(document.querySelector('.container'), {
+    const container = document.querySelector('.container');
+    
+    // Tambahkan class screenshot-mode
+    container.classList.add('screenshot-mode');
+    
+    html2canvas(container, {
         scale: 2,
         useCORS: true,
         logging: true,
         allowTaint: false,
-        backgroundColor: null
+        backgroundColor: null,
+        onclone: (clonedDoc) => {
+            // Pertahankan tampilan desktop di clone
+            clonedDoc.querySelector('.container').style.width = '800px';
+        }
     }).then(canvas => {
         const link = document.createElement('a');
         link.download = 'daily-schedule.png';
         link.href = canvas.toDataURL('image/png', 1.0);
         link.click();
+        
+        // Hapus class screenshot-mode setelah selesai
+        container.classList.remove('screenshot-mode');
     });
 }

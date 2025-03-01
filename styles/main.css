@@ -9,33 +9,84 @@ body {
     min-height: 100vh;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.95);
-    padding: 30px;
+    padding: 25px 30px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-h1 {
-    text-align: center;
-    color: #2d3748;
-    margin-bottom: 30px;
-    font-size: 2.5em;
+/* Header */
+.button-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
 }
 
+h1 {
+    color: #2d3748;
+    font-size: 2.2em;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Buttons */
+button, .github-link {
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover, .github-link:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Samakan ukuran tombol header */
+.github-link, .screenshot-btn {
+    width: 180px;
+    height: 42px;
+    padding: 0 15px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Form */
 .schedule-form {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 25px;
+    align-items: stretch;
 }
 
 input {
     flex: 1;
-    padding: 12px;
+    height: 48px;
+    padding: 0 15px;
     border: 2px solid #e2e8f0;
     border-radius: 8px;
     font-size: 16px;
@@ -48,26 +99,20 @@ input:focus {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
 
-button {
-    padding: 12px 25px;
-    background: #667eea;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
+/* Tombol Tambah */
+button[type="submit"] {
+    width: 120px;
+    height: 48px;
+    flex-shrink: 0;
+    font-size: 16px;
 }
 
-button:hover {
-    background: #764ba2;
-    transform: translateY(-2px);
-}
-
+/* Entries */
 .entries-container {
     background: white;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .entry-row {
@@ -77,7 +122,6 @@ button:hover {
     border-bottom: 1px solid #e2e8f0;
     transition: all 0.3s ease;
     justify-content: space-between;
-    position: relative;
 }
 
 .entry-row:hover {
@@ -85,18 +129,63 @@ button:hover {
     transform: translateX(5px);
 }
 
+.entry-row:last-child {
+    border-bottom: none;
+}
+
 .time {
     width: 100px;
     font-weight: 600;
     color: #2d3748;
+    font-size: 15px;
 }
 
 .activity {
     flex: 1;
     color: #4a5568;
     font-weight: 600;
+    font-size: 15px;
+    padding: 0 15px;
 }
 
+/* Delete button */
+.delete-btn {
+    background: #fc8181;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    padding: 0;
+    margin-left: 15px;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    color: transparent;
+}
+
+.delete-btn::before {
+    content: "\f1f8";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 16px;
+    color: white;
+    display: block;
+}
+
+.delete-btn * {
+    display: none;
+    visibility: hidden;
+}
+
+.delete-btn:hover {
+    background: #f56565;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -110,74 +199,138 @@ button:hover {
     border-radius: 4px;
 }
 
-.delete-btn {
-    background: #fc8181;
-    padding: 8px 15px;
-    margin-left: 15px;
-    order: 2;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
+/* Media query mobile */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 10px;
+        margin: 0;
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .button-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        flex-wrap: nowrap;
+    }
+    
+    h1 {
+        font-size: 1.2em;
+        margin-bottom: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60%;
+    }
+    
+    .header-buttons {
+        display: flex;
+        gap: 5px;
+        flex-shrink: 0;
+    }
+    
+    /* Icon-only buttons */
+    .github-link, 
+    .screenshot-btn {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        padding: 0;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Ikon FontAwesome */
+    .github-link::after {
+        content: "\f09b";
+        font-family: "Font Awesome 6 Brands";
+        font-size: 18px;
+        position: absolute;
+    }
+    
+    .screenshot-btn::after {
+        content: "\f030";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 18px;
+        position: absolute;
+    }
+    
+    /* Sembunyikan teks */
+    .github-link span,
+    .screenshot-btn span {
+        display: none;
+    }
+    
+    /* Form Input */
+    .schedule-form {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+    
+    input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    /* Entry Item */
+    .entry-row {
+        padding: 8px 10px;
+        flex-wrap: nowrap;
+    }
+    
+    .time {
+        font-size: 12px;
+        width: 70px;
+        white-space: nowrap;
+    }
+    
+    .activity {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-right: 5px;
+    }
+    
+    .delete-btn {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        margin-left: 8px;
+        border-radius: 6px;
+    }
+    
+    .delete-btn::before {
+        font-size: 14px;
+    }
 }
 
-.delete-btn:hover {
-    background: #f56565;
+/* Force desktop view untuk screenshot */
+.screenshot-mode {
+    /* Tidak ada perubahan dari tampilan normal */
 }
 
-.button-group {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 25px;
-}
-
-.screenshot-btn {
-    background: #4f46e5;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: none;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.screenshot-btn:hover {
-    background: #4338ca;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-.screenshot-btn i {
-    font-size: 18px;
-    margin-right: 8px;
-}
-
-.header-buttons {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.github-link {
-    background: #4f46e5;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.github-link:hover {
-    background: #4338ca;
-    transform: translateY(-2px);
+/* Hapus semua override yang tidak diinginkan */
+@media (max-width: 768px) {
+    /* Tidak ada override khusus untuk screenshot mode di mobile */
 }
