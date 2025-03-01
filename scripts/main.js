@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('scheduleForm');
     const entriesContainer = document.getElementById('entriesContainer');
     
-    // Fungsi-fungsi
     function saveToCookie() {
         const entries = [];
         document.querySelectorAll('.entry-row').forEach(entry => {
