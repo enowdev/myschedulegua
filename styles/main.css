@@ -24,7 +24,6 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Header */
 .button-group {
     display: flex;
     align-items: center;
@@ -45,7 +44,6 @@ h1 {
     gap: 12px;
 }
 
-/* Buttons */
 button, .github-link {
     background: #667eea;
     color: white;
@@ -65,7 +63,6 @@ button:hover, .github-link:hover {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* Samakan ukuran tombol header */
 .github-link, .screenshot-btn {
     width: 180px;
     height: 42px;
@@ -75,7 +72,6 @@ button:hover, .github-link:hover {
     text-decoration: none;
 }
 
-/* Form */
 .schedule-form {
     display: flex;
     gap: 12px;
@@ -99,7 +95,6 @@ input:focus {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
 
-/* Tombol Tambah */
 button[type="submit"] {
     width: 120px;
     height: 48px;
@@ -107,7 +102,6 @@ button[type="submit"] {
     font-size: 16px;
 }
 
-/* Entries */
 .entries-container {
     background: white;
     border-radius: 10px;
@@ -148,7 +142,6 @@ button[type="submit"] {
     padding: 0 15px;
 }
 
-/* Delete button */
 .delete-btn {
     background: #fc8181;
     width: 36px;
@@ -185,7 +178,6 @@ button[type="submit"] {
     background: #f56565;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -199,7 +191,6 @@ button[type="submit"] {
     border-radius: 4px;
 }
 
-/* Media query mobile */
 @media (max-width: 768px) {
     body {
         padding: 10px;
@@ -236,7 +227,6 @@ button[type="submit"] {
         flex-shrink: 0;
     }
     
-    /* Icon-only buttons */
     .github-link, 
     .screenshot-btn {
         width: 36px;
@@ -251,7 +241,6 @@ button[type="submit"] {
         overflow: hidden;
     }
     
-    /* Ikon FontAwesome */
     .github-link::after {
         content: "\f09b";
         font-family: "Font Awesome 6 Brands";
@@ -267,13 +256,11 @@ button[type="submit"] {
         position: absolute;
     }
     
-    /* Sembunyikan teks */
     .github-link span,
     .screenshot-btn span {
         display: none;
     }
     
-    /* Form Input */
     .schedule-form {
         flex-direction: column;
         gap: 8px;
@@ -292,7 +279,6 @@ button[type="submit"] {
         font-size: 14px;
     }
     
-    /* Entry Item */
     .entry-row {
         padding: 8px 10px;
         flex-wrap: nowrap;
@@ -325,12 +311,8 @@ button[type="submit"] {
     }
 }
 
-/* Force desktop view untuk screenshot */
 .screenshot-mode {
-    /* Tidak ada perubahan dari tampilan normal */
 }
 
-/* Hapus semua override yang tidak diinginkan */
 @media (max-width: 768px) {
-    /* Tidak ada override khusus untuk screenshot mode di mobile */
 }

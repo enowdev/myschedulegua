@@ -74,8 +74,7 @@ function formatTime(timeString) {
 
 function takeScreenshot() {
     const container = document.querySelector('.container');
-    
-    // Tambahkan class screenshot-mode
+
     container.classList.add('screenshot-mode');
     
     html2canvas(container, {
@@ -85,7 +84,6 @@ function takeScreenshot() {
         allowTaint: false,
         backgroundColor: null,
         onclone: (clonedDoc) => {
-            // Pertahankan tampilan desktop di clone
             clonedDoc.querySelector('.container').style.width = '800px';
         }
     }).then(canvas => {
@@ -93,8 +91,6 @@ function takeScreenshot() {
         link.download = 'daily-schedule.png';
         link.href = canvas.toDataURL('image/png', 1.0);
         link.click();
-        
-        // Hapus class screenshot-mode setelah selesai
         container.classList.remove('screenshot-mode');
     });
 }
