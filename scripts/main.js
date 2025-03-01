@@ -55,15 +55,52 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        const time = document.getElementById('timeInput').value;
+        let hours = document.getElementById('hoursInput').value.padStart(2, '0');
+        let minutes = document.getElementById('minutesInput').value.padStart(2, '0');
+
+        if (hours === '24') {
+            minutes = '00';
+            minutesInput.value = '00';
+        }
+        
+        const time = `${hours}:${minutes}`;
         const activity = document.getElementById('activityInput').value;
 
-        if (time && activity) {
-            createEntry(formatTime(time), activity);
+        if ((hours && minutes && activity) || (hours === '24' && activity)) {
+            createEntry(time, activity);
             form.reset();
             saveToCookie();
+            document.getElementById('minutesInput').disabled = false;
         }
     });
+    
+    const hoursInput = document.getElementById('hoursInput');
+    const minutesInput = document.getElementById('minutesInput');
+    
+    function restrictToNumbers(input) {
+        input.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if (this.value.length > 2) {
+                this.value = this.value.slice(0, 2);
+            }
+            if (this === hoursInput && parseInt(this.value) > 24) {
+                this.value = '24';
+            }
+            if (this === minutesInput && parseInt(this.value) > 59) {
+                this.value = '59';
+            }
+            if (this === hoursInput && parseInt(this.value) === 24) {
+                minutesInput.value = '00';
+                minutesInput.disabled = true;
+            } else if (this === hoursInput) {
+                minutesInput.disabled = false;
+            }
+        });
+    }
+    
+    restrictToNumbers(hoursInput);
+    restrictToNumbers(minutesInput);
+    
     loadFromCookie();
 });
 
@@ -74,23 +111,17 @@ function formatTime(timeString) {
 
 function takeScreenshot() {
     const container = document.querySelector('.container');
-
-    container.classList.add('screenshot-mode');
     
     html2canvas(container, {
         scale: 2,
         useCORS: true,
         logging: true,
         allowTaint: false,
-        backgroundColor: null,
-        onclone: (clonedDoc) => {
-            clonedDoc.querySelector('.container').style.width = '800px';
-        }
+        backgroundColor: null
     }).then(canvas => {
         const link = document.createElement('a');
-        link.download = 'daily-schedule.png';
+        link.download = 'my-schedule-gua.png';
         link.href = canvas.toDataURL('image/png', 1.0);
         link.click();
-        container.classList.remove('screenshot-mode');
     });
 }

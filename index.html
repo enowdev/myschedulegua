@@ -27,7 +27,11 @@
         </div>
         
         <form class="schedule-form" id="scheduleForm">
-            <input type="time" id="timeInput" required>
+            <div class="time-input-wrapper">
+                <input type="number" id="hoursInput" min="0" max="24" placeholder="Jam" required>
+                <span class="time-separator">:</span>
+                <input type="number" id="minutesInput" min="0" max="59" placeholder="Menit" required>
+            </div>
             <input type="text" id="activityInput" placeholder="Aktivitas..." required>
             <button type="submit">Tambah</button>
         </form>
@@ -35,6 +39,18 @@
         <div class="entries-container" id="entriesContainer">
         </div>
     </div>
+    
+    <footer class="site-footer">
+        <div class="social-links">
+            <a href="https://www.facebook.com/kyhftsky" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook"></i> @kyhftsky
+            </a>
+            <a href="https://www.instagram.com/rxky.mahardika" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i> @rxky.mahardika
+            </a>
+        </div>
+    </footer>
+    
     <script src="scripts/main.js"></script>
 </body>
 </html> 
