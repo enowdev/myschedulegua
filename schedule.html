@@ -168,16 +168,45 @@
             content: none;
         }
 
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .github-link {
+            background: #4f46e5;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .github-link:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="button-group">
             <h1>My Schedule Gua</h1>
-            <button class="screenshot-btn" onclick="takeScreenshot()">
-                <i class="fas fa-camera"></i>
-                Download Screenshot
-            </button>
+            <div class="header-buttons">
+                <a href="https://github.com/enowdev/myschedulegua" 
+                   class="github-link" 
+                   target="_blank"
+                   rel="noopener noreferrer">
+                   View Source Code
+                </a>
+                <button class="screenshot-btn" onclick="takeScreenshot()">
+                    <i class="fas fa-camera"></i>
+                    Download Screenshot
+                </button>
+            </div>
         </div>
         
         <form class="schedule-form" id="scheduleForm">
